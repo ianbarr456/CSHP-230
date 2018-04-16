@@ -1,0 +1,33 @@
+﻿@model BirthdayCardGenerator.Models.BirthdayCardModel
+
+@{
+    ViewBag.Title = "Birthday Card Home";
+    //Layout = null;
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <style>
+        .btn a {
+            color: white;
+            text-decoration: none;
+        }
+
+        body {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="text-center">
+        <h2>Welcome to Birthday Card Generator!</h2>
+
+        <div class="btn btn-success">
+            @Html.ActionLink("Create a card", "CardForm")
+        </div>
+    </div>
+</body>
+</html>

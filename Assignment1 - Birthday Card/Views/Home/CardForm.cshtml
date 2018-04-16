@@ -1,0 +1,36 @@
+﻿@model BirthdayCardGenerator.Models.BirthdayCardModel
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Styles.css" />
+    <title>Birthday Card Generator</title>
+</head>
+
+@{
+    ViewBag.Title = "Birthday Card Form";
+    //Layout = null;
+}
+
+<body>
+    @using (Html.BeginForm())
+    {
+        <div class="text-center">
+            <h2>Send a Birthday Card</h2>
+        </div>
+        @Html.ValidationSummary()
+        <p>
+            <label>To:</label> @Html.TextBoxFor(t => t.To,
+            new { @class = "form-control", maxlength = 30, style = "width:200px;" })
+        </p>
+        <p>
+            <label>From:</label> @Html.TextBoxFor(t => t.From,
+            new { @class = "form-control", maxlength = 30, style = "width:200px;" })
+        </p>
+        <p>
+            <label>Message:</label> @Html.TextBoxFor(t => t.Message,
+            new { @class = "form-control", maxlength = 30, style = "width:200px;" })
+        </p>
+
+        <input type="submit" value="Send Card" class="btn btn-success" />
+    }
+</body>

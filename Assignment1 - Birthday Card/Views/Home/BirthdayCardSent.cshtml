@@ -1,0 +1,28 @@
+﻿@model BirthdayCardGenerator.Models.BirthdayCardModel
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Styles.css" />
+    <title>Birthday Card Generator</title>
+</head>
+
+@{
+    ViewBag.Title = "Birthday Card Complete";
+    //Layout = null;
+}
+
+<!DOCTYPE html>
+<body>
+    <div class="text-center">
+        <h2>Birthday Card Sent</h2>
+        </div>
+        <p>
+            <label>To: @Model.To</label>
+        </p>
+        <p>
+            <label>From: @Model.From</label>
+        </p>
+        <p>
+            <label>Message: @Model.Message</label>
+        </p>
+</body>
