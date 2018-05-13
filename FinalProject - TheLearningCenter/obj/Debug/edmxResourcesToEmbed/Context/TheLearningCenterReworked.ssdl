@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TheLearningCenterReworkedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="ClassId" />
+    </Key>
+    <Property Name="ClassId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClassName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ClassDescription" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ClassPrice" Type="smallmoney" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserPassword" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserIsAdmin" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserClass">
+    <Key>
+      <PropertyRef Name="ClassId" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="ClassId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_UserClass_Class1">
+    <End Role="Class" Type="Self.Class" Multiplicity="1" />
+    <End Role="UserClass" Type="Self.UserClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="ClassId" />
+      </Principal>
+      <Dependent Role="UserClass">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserClass_User1">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserClass" Type="Self.UserClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserClass">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TheLearningCenterReworkedModelStoreContainer">
+    <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserClass" EntityType="Self.UserClass" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_UserClass_Class1" Association="Self.FK_UserClass_Class1">
+      <End Role="Class" EntitySet="Class" />
+      <End Role="UserClass" EntitySet="UserClass" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserClass_User1" Association="Self.FK_UserClass_User1">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserClass" EntitySet="UserClass" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
