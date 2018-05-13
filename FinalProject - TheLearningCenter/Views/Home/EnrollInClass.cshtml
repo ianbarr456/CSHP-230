@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "EnrollInClass";
+}
+
+<h2>Enroll In A Class</h2>
+<h4 style="color:red"><i>*The list will only contain classes you are not currently enrolled in</i></h4>
+
+@using (Html.BeginForm())
+{
+    <section class="row features well">
+
+        @foreach (var item in ViewBag.ClassList)
+        {
+            <div class="col-sm-12">
+                <a href="@Url.Action("AddEnrollInClass", "Home", new { className = @item.ClassName }, null)">@item.ClassName</a>
+            </div>
+        }
+
+    </section>
+}

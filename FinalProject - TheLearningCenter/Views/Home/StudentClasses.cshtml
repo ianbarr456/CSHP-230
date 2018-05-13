@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "StudentClasses";
+}
+
+<h2>Student Classes</h2>
+
+<table class="table">
+    <tr>
+        <th style="color:blue;"><b>Name</b></th>
+        <th style="color:blue;"><b>Description</b></th>
+        <th style="color:blue;"><b>Price</b></th>
+        <th></th>
+    </tr>
+    @foreach (var item in ViewBag.ClassList)
+    {
+        <tr>
+            <td Width="200px">@item.ClassName</td>
+            <td Width="300px">@item.ClassDescription</td>
+            <td>@string.Format($"{item.ClassPrice:c}")</td>
+            @*<td>@Html.ActionLink("DROP", "DropClass", "Home", new { id = item.ClassId })</td>*@
+            <td><a href="@Url.Action("DropClass", "Home", new { className = @item.ClassName }, null)">DROP</a></td>
+        </tr>
+    }
+</table>
